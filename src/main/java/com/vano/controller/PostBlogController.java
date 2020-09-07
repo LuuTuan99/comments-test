@@ -19,18 +19,25 @@ public class PostBlogController {
     @Autowired
     private PostService postService;
 
+
     @RequestMapping(method = RequestMethod.GET)
     public String list(Model model) {
         List<PostBlog> postBlogList = postService.getAll();
 
-        model.addAttribute("postBlog", postBlogList);
-        return "list";
+        model.addAttribute("postBlogList", postBlogList);
+        return "blog/list";
+    }
+
+    @RequestMapping(value = "/test", method = RequestMethod.GET)
+    public String home() {
+        return "blog/detail";
     }
 
     @RequestMapping(value = "/create", method = RequestMethod.GET)
     public String create (Model model) {
-        model.addAttribute("postBlog", new PostBlog());
-        return "create";
+        PostBlog postBlog = new PostBlog();
+        model.addAttribute("postBlog", postBlog);
+        return "blog/create";
     }
 
     @RequestMapping(value = "/create", method = RequestMethod.POST)

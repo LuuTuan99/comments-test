@@ -16,7 +16,7 @@ public class PostBlog implements Serializable {
     private int status;
 
 
-    @OneToMany(mappedBy = "postblog", cascade = CascadeType.REMOVE)
+    @OneToMany(mappedBy = "postBlog", cascade = CascadeType.REMOVE)
     private Collection<Comment> comments;
 
 

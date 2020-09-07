@@ -14,7 +14,7 @@ public class Comment implements Serializable {
     private int status  ;
 
     @ManyToOne
-    @JoinColumn(name = "postblog_id", referencedColumnName = "postblog_id", nullable = false)
+    @JoinColumn(columnDefinition = "post_id", nullable = false)
     private PostBlog postBlog;
 
     public Long getId() {

@@ -12,6 +12,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 
 import javax.servlet.http.HttpServletRequest;
 import java.util.List;
+import java.util.Optional;
 
 @Controller
 @RequestMapping(value = "/home")
@@ -30,7 +31,7 @@ public class PostBlogController {
 
     @RequestMapping(value = "/test", method = RequestMethod.GET)
     public String home() {
-        return "blog/detail";
+        return "comments/create";
     }
 
     @RequestMapping(value = "/create", method = RequestMethod.GET)
@@ -52,7 +53,7 @@ public class PostBlogController {
 
     @RequestMapping(value = "/detail/{id}", method = RequestMethod.GET)
     public String detail(@PathVariable Long id, Model model) {
-        PostBlog postBlog = postService.findById(id);
+        Optional<PostBlog> postBlog = postService.findById(id);
         if (postBlog == null) {
             return "error/404";
         }

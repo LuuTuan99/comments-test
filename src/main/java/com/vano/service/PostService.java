@@ -8,6 +8,7 @@ import org.springframework.stereotype.Service;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.List;
+import java.util.Optional;
 
 @Service
 public class PostService {
@@ -18,8 +19,8 @@ public class PostService {
         return postBlogRepository.findAll();
     }
 
-    public PostBlog findById(Long id){
-        return postBlogRepository.findById(id).orElse(null);
+    public Optional<PostBlog> findById(Long id){
+        return postBlogRepository.findById(id);
     }
 
     public PostBlog save(PostBlog postBlog) {

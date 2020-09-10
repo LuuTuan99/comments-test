@@ -30,10 +30,10 @@ public class CommentController {
         } catch (Exception ex) {
             ex.getStackTrace();
         }
-        return "redirect:/home";
+        return "redirect:/home/detail/" + comment.getPostBlog().getId();
     }
 
-    @RequestMapping(value = "/create", method = RequestMethod.GET)
+    @RequestMapping(value = "/create/{id}", method = RequestMethod.GET)
     public String createComment(@PathVariable Long id, Model model) {
         Optional<PostBlog> postBlog = postService.findById(id);
 

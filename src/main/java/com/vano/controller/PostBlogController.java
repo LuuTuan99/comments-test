@@ -55,10 +55,10 @@ public class PostBlogController {
     public String detail(@PathVariable Long id, Model model) {
         Optional<PostBlog> postBlog = postService.findById(id);
         if (postBlog == null) {
-            return "error/404";
+            return "error";
         }
-
-        model.addAttribute("postBlog", postBlog);
-        return "detail";
+        PostBlog post = postBlog.get();
+        model.addAttribute("post", post);
+        return "blog/detail";
     }
 }

@@ -14,35 +14,50 @@
 
     <div class="container">
 
+        <!--Show this info message only if posted successfully-->
+        <!--        <div class="alert alert-info" th:if="${successMessage}" th:utext="${successMessage}"></div>-->
+
+        <!--New Post Form-->
         <div class="row" style="margin-top:20px">
             <div class="col-xs-12 col-sm-8 col-md-6 col-sm-offset-2 col-md-offset-3">
+                <form autocomplete="off" action="#" th:action="@{/comments/create}"
+                      th:object="${comment}" method="post" class="form-horizontal"
+                      role="form">
 
-
-
-
-                <form>
-
-                    <h2 class="text-center">Write new comment</h2>
+                    <h2 class="text-center">Write new post</h2>
 
                     <div class="form-group">
-                        <textarea
-                                placeholder="Body" class="form-control input-lg"/>
+                        <input type="text" th:field="*{content}" placeholder="Content"
+                               class="form-control input-lg"/>
                     </div>
 
-
+                    <div class="form-group">
+                        <input type="text" th:field="*{username}" placeholder="Username"
+                               class="form-control input-lg"/>
+                    </div>
+                    <input type="hidden" th:field="*{id}"/>
 
                     <div class="form-group">
-                        <button type="submit" class="btn btn-primary btn-block">Comment</button>
+                        <input type="submit" class="btn btn-primary btn-block" value="Save"/>
                     </div>
 
                 </form>
-
-
-
-
             </div>
         </div>
 
+        <!--Delete Button-->
+        <!--Dont show delete button if the post is brand new-->
+        <div class="row" >
+            <div class="col-md-6 col-md-offset-3">
+                <form action="#" th:method="delete"
+                      class="form-horizontal">
+                    <div class="form-group">
+                        <input type="hidden" name="_method" value="delete"/>
+                        <button type="submit" class="btn btn-danger btn-block" th:text="Delete">Delete</button>
+                    </div>
+                </form>
+            </div>
+        </div>
     </div>
 
 </div>

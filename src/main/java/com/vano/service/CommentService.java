@@ -21,6 +21,6 @@ public class CommentService {
     }
 
     public Comment save(Comment comment) {
-        return commentRepository.save(comment);
+        return commentRepository.saveAndFlush(comment);
     }
 }

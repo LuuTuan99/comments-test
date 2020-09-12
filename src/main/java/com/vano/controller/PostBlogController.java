@@ -42,7 +42,7 @@ public class PostBlogController {
     }
 
     @RequestMapping(value = "/create", method = RequestMethod.POST)
-    public String stores(Model model, PostBlog postBlog, HttpServletRequest request) {
+    public String stores(PostBlog postBlog, HttpServletRequest request) {
         try {
             postService.save(postBlog);
         } catch (Exception ex) {

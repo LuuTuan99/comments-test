@@ -11,10 +11,10 @@ public class Comment implements Serializable {
     private String username;
     private String content;
     private String created_at;
-    private int status  ;
+    private int status;
 
-    @ManyToOne
-    @JoinColumn(columnDefinition = "post_id", nullable = false)
+    @ManyToOne(fetch=FetchType.LAZY, cascade = { CascadeType.ALL })
+    @JoinColumn(columnDefinition = "post_blog_id")
     private PostBlog postBlog;
 
     public Long getId() {
@@ -63,5 +63,16 @@ public class Comment implements Serializable {
 
     public void setPostBlog(PostBlog postBlog) {
         this.postBlog = postBlog;
+    }
+
+    @Transient
+    private String postBlogId;
+
+    public String getPostBlogId() {
+        return postBlogId;
+    }
+
+    public void setPostBlogId(String postBlogId) {
+        this.postBlogId = postBlogId;
     }
 }

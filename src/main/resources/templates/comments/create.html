@@ -35,7 +35,7 @@
                         <input type="text" th:field="*{username}" placeholder="Username"
                                class="form-control input-lg"/>
                     </div>
-                    <input type="hidden" name="postBlogId" th:value="${comment.postBlog.id}">
+                    <input type="hidden" th:field="*{postBlog}" >
 
                     <div class="form-group">
                         <button type="submit" class="btn btn-primary btn-block">Comments</button>

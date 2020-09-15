@@ -26,7 +26,7 @@ public class CommentController {
     @RequestMapping(value = "/create", method = RequestMethod.POST)
     public String stores(Comment comment) {
         commentService.save(comment);
-        return "redirect:/home/detail/" + comment.getPostBlogId();
+        return "redirect:/home/detail/" + comment.getPostBlog().getId();
     }
 
     @RequestMapping(value = "/create/{id}", method = RequestMethod.GET)
